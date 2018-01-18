@@ -6,12 +6,38 @@
 <body>
     <h1>Host</h1>
     <div id="url-info">
-        <p id="url"><span onclick="window.location.href='scheme.html'" class="grower" id="scheme" title="scheme">https:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower active" title="host" onclick="window.location.href='host.html'">www.dburg.es</span><span class="separator"></span><span id="path1" title="path" class="grower" onclick="window.location.href='path.html?active=path1'" title="path">lessons</span><span class="separator"></span><span id="path2" class="grower" onclick="window.location.href='path.html?active=path2'" title="path">url<span class="separator"></span></span><span id="file" class="grower" onclick="window.location.href='path.html?active=file'" title="file name">what.html</span></p>
+        <p class="url"><span onclick="window.location.href='scheme.html'" class="grower" id="scheme" title="scheme">https:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower active" title="host" onclick="window.location.href='host.html'">www.dburg.es</span><span class="separator"></span><span id="path1" title="path" class="grower" onclick="window.location.href='path.html?active=path1'" title="path">lessons</span><span class="separator"></span><span id="path2" class="grower" onclick="window.location.href='path.html?active=path2'" title="path">url<span class="separator"></span></span><span id="file" class="grower" onclick="window.location.href='path.html?active=file'" title="file name">what.html</span></p>
+        
+        <p>The <span class="highlight">host name</span> is arguably the most important piece of a <span class="highlight">URL</span>. The <span class="highlight">host name</span> informs you which website you are on and is often times the name you use when referring to a site.  Think of Twitter or Instagram or Facebook or Youtube or Wikipedia or Twitch, we refer to these sites by a shortened version of their <span class="highlight">host name</span>.  When we casually speak of Youtube in a conversation we all know we are talking about www.youtube.com</p>
+        <p>Let's take a look at the Wikipedia example <span class="highlight">host name</span>:</p>
+        <div>www<div class="period"></div>wikipedia<div class="period"></div>org</div>
+        <p>What may stand out is that the <span class="highlight">host name</span> is itself comprised of three even smaller parts, each separated by a period.</p>
+        <h3 class="highlight">1)Sub Domain</h3>
+        <p class="url"><span class="active">www</span>.wikipedia.org</p>
+        <p>This part of the host name can be anything at any point.  It is at the discretion of whomever controls the website to choose whatever they would like for this piece of the host name.  Often times it is used for organizing which version of a webpage you are seeing. Wikipedia was chosen as an example because it displays an interesting usage of the <span class="highlight">subdomain</span>. Click the buttons below to see what happens when you change the <span class="highlight">subdomain</span> of Wikipedia.</p>
+        <div id="subdomain-example">
+            <div id="subdomain-choices">
+                <button onclick="changeSub('en')">en</button>
+                <button onclick="changeSub('es')">es</button>
+                <button onclick="changeSub('fr')">fr</button>
+                <button onclick="changeSub('simple')">simple</button>
+            </div>
+            <p><span id="changing-subdomain" class="url active">en</span>.wikipedia.org/wiki/url</p>
+            <iframe id="wiki-sub" src="https://www.wikipedia.org/wiki/URL"></iframe>
+        </div>
     </div>    
 <script>
-    
+    function changeSub(sd){
+        document.getElementById("changing-subdomain").innerText=sd;
+        document.getElementById("wiki-sub").src=`https://${sd}.wikipedia.org/wiki/URL`
+    }
 </script>
 <style>
+    #wiki-sub{
+        width:100%;
+        height:500px;
+        pointer-events:none;
+    }
     body {
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         text-align:center;
@@ -20,6 +46,7 @@
     }
 
     button {
+        font-size:16px;
         box-shadow: 0px 17px 10px -10px rgba(255, 255, 255, 0.4);
         cursor: pointer;
         transition: all ease-in-out 300ms
@@ -60,14 +87,16 @@
         position:relative;
         font-size:20px;
     }
-    #url{
+    #url-info>.url:first-child{
+        line-height:100px;
+    }
+    .url{
         color:grey;
         font-size:20px;
         text-align:left;
         margin:20px 0px;
-        line-height:100px;
     }
-    #url .active{
+    .active{
         pointer-events: none;
         font-size:30px;
         color:#FF9F1C;
@@ -87,6 +116,27 @@
         color:#E71D36;
         font-weight:bolder;
     }
+    .period:before{
+        content:".";
+        color:#E71D36;
+        font-weight:bolder;
+        font-size:30px
+    }
+
+    
+    .period {
+        display:inline-block;
+		animation: rotation 1s infinite alternate ease-in-out;
+}
+
+@keyframes rotation {
+		from {
+				transform: translateY(-15px);
+		}
+		to {
+				transform: translateY(15px);
+		}
+}
 </style>
 </body>
 </html>
