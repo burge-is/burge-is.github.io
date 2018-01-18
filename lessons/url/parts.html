@@ -13,12 +13,12 @@
 
 <div id="url-info">
     <p>Specifically, you typed:</p>
-    <p id="url"><span class="grower" id="scheme">http:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower">www.dburg.es</span><span class="separator"></span><span id="path1" class="grower">lessons</span><span class="separator"></span><span id="path2" class="grower">url<span class="separator"></span></span><span id="file" class="grower">what.html</span></p>
+    <p id="url"><span onclick="window.location.href='scheme'" class="grower" id="scheme">https:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower">www.dburg.es</span><span class="separator"></span><span id="path1" class="grower">lessons</span><span class="separator"></span><span id="path2" class="grower">url<span class="separator"></span></span><span id="file" class="grower">what.html</span></p>
     <p>This is a <span class="highlight">URL</span>. You type it into an address bar to request content from the internet. <span class="highlight">URL</span>s serve as an <strong>address</strong> to web based content. <span class="highlight">URL</span>s are made up of parts separated by <strong>/</strong>'s. Much like an address on an envelope the different parts of a <span class="highlight">URL</span> provide your browser with contextual information regarding the whereabouts of whatever it is you are trying to access.</p>
     <br>
     <p>Highlight the individual parts <strong>above</strong> to see what each part is called and to highlight it's connected part of our fictional <i>"web envelope"</i> below.</p>
     <br>
-    <p>Click on the individual parts <strong>above</strong> to navigate to a separate page describing that particular part of the <span class="highlight">URL</span>.</p>
+    <p>Click on the individual parts <strong>above</strong> to navigate to a different page describing that particular part. Watch the <span class="highlight">URL</span> change in the address bar when you do this.</p>
 </div>    
 <div id="web-envelope">
     <span id="envelope-filename">what.html</span>
@@ -42,15 +42,81 @@
     document.getElementById("scheme").addEventListener('mouseleave',function(){document.getElementById("envelope").classList.remove('glow')});
 </script>
 <style>
+    
+    body {
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color:#FDFFFC;
+        background-color:#011627;
+    }
+    p{
+        margin:0px;
+    }
+    #envelope{
+        width:700px;
+        position:relative;
+        margin:15px;
+    }
+    #address-pointer{
+        height:20px;
+        width:20px;
+        display:inline-block;
+        float:left;
+    }
+    #address-info{
+        left:75px;
+        max-width:50%;
+        position:relative;
+    }
+    .highlight {
+        color:#FF9F1C;
+        font-weight:bolder;
+    }
+    #url-info{
+        text-align:left;
+        margin-top:30px;
+        max-width:70%;
+        left:15%;
+        right:15%;
+        position:relative;
+        font-size:20px;
+    }
+    #url{
+        color:#FF9F1C;
+        font-size:30px;
+        text-align:left;
+        margin:20px 0px;
+    }
+    .grower{
+        transition: all ease-in-out 300ms;
+    }
+    .grower:hover{
+        color:yellow;
+        font-size:33px;
+        transform:scale(3.0);
+        cursor:help;
+    }
+    .grower:focus{
+        color:yellow;
+        font-size:33px;
+        transform:scale(3.0);
+        cursor:help;
+    }
+    .separator:before{
+        content:"/";
+        color:#E71D36;
+        font-size:50px;
+        margin:2px;
+        font-weight:bolder;
+    }
     .glow{
         border-color:#FF9F1C;
         border-style:solid;
         border-width: 5px;
         transform:scale(1.05);
-                transition: all ease-in-out 300ms;
-
+        transition: all ease-in-out 300ms;
     }
     #web-envelope{
+        margin-top:20px;
         color:black;
         font-family:"Comic Sans MS", cursive, sans-serif;
         position:relative;
@@ -76,65 +142,6 @@
         bottom:260px;
         right:100px;
         z-index:20;
-    }
-    body {
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        color:#FDFFFC;
-        background-color:#011627;
-    }
-    p{
-        margin:0px;
-    }
-    #envelope{
-        width:700px;
-        position:relative;
-        margin:15px;
-    }
-    #address-pointer{
-        height:20px;
-        width:20px;
-        display:inline-block;
-        float:left;
-    }
-    #address-info{
-        left:20%;
-        max-width:70%;
-        position:relative;
-    }
-    .highlight {
-        color:#FF9F1C;
-        text-decoration: underline
-    }
-    #url-info{
-        text-align:left;
-        margin-top:30px;
-        width:70%;
-        left:15%;
-        right:15%;
-        position:relative;
-        font-size:20px;
-    }
-    #url{
-        color:#FF9F1C;
-        font-size:30px;
-        text-align:left;
-        margin:20px;
-    }
-    .grower{
-        transition: all ease-in-out 300ms
-    }
-    .grower:hover{
-        color:yellow;
-        font-size:33px;
-        transform:scale(3.0);
-        cursor:help;
-    }
-    .separator:before{
-        content:"/";
-        color:#E71D36;
-        font-size:50px;
-        margin:2px;
-        font-weight:bolder;
     }
 </style>
 </body>
