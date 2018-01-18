@@ -12,9 +12,9 @@
         <p>Let's take a look at the Wikipedia example <span class="highlight">host name</span>:</p>
         <div>www<div class="period"></div>wikipedia<div class="period"></div>org</div>
         <p>What may stand out is that the <span class="highlight">host name</span> is itself comprised of three even smaller parts, each separated by a period.</p>
-        <h3 class="highlight">1)Sub Domain</h3>
+        <h3 class="highlight">1) Subdomain</h3>
         <p class="url"><span class="active">www</span>.wikipedia.org</p>
-        <p>This part of the host name can be anything at any point.  It is at the discretion of whomever controls the website to choose whatever they would like for this piece of the host name.  Often times it is used for organizing which version of a webpage you are seeing. Wikipedia was chosen as an example because it displays an interesting usage of the <span class="highlight">subdomain</span>. Click the buttons below to see what happens when you change the <span class="highlight">subdomain</span> of Wikipedia.</p>
+        <p>This part of the host name can be anything at any point.  It is at the discretion of whomever controls the website to choose whatever they would like for this piece of the host name.  Often times it is used for organizing which version of a webpage you are seeing. Most commonly the default will be <strong>www</strong> as a shorthand for <strong>World Wide Web</strong>. Wikipedia was chosen as an example because it displays an interesting usage of the <span class="highlight">subdomain</span>. Click the buttons below to see what happens when you change the <span class="highlight">subdomain</span> of Wikipedia.</p>
         <div id="subdomain-example">
             <div id="subdomain-choices">
                 <button onclick="changeSub('en')">en</button>
@@ -25,6 +25,16 @@
             <p><span id="changing-subdomain" class="url active">en</span>.wikipedia.org/wiki/url</p>
             <iframe id="wiki-sub" src="https://www.wikipedia.org/wiki/URL"></iframe>
         </div>
+        
+        <h3 class="highlight">2) Top Level Domain</h3>
+        <p class="url">www.wikipedia.<span class="active">org</span></p>
+        <p>The <span class="highlight">top level domain</span> was originally intended to represent the purpose of a website, like .edu being used for school websites. Now however the <span class="highlight">TLD</span> can be used to decorate a websites host name. There is a finite number of choices for a <span class="highlight">TLD</span> controlled by a governing body called the Internet Corporation for Assigned Names and Numbers. To see all possible options visit this <a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">officially-maintained, extensive list</a>.</p>
+  
+        <h3 id="domain-name" class="highlight">3) Domain Name</h3>
+        <p class="url">www.<span class="active">wikipedia.org</span></p>
+        <p>The <span class="highlight">domain name</span> is a bit trickier because it is the combination of the middle part and the previously discussed <span class="highlight">TLD</span>.  This combination serves as the name of a website and must be unique.  Only one website may exist with a given <span class="highlight">domain name</span>.</p>
+        <p>Try making your own <span class="highlight">domain name</span>. Visit <a href="https://domains.google.com/registrar?s=&hl=en">a domain name registrar</a> to see if you can find an available <span class="highlight">domain name</span> that you like. Remember you can only use <span class="highlight">TLD</span>s from the approved list above. Type your desired name in the search box and see what comes out.</p>
+        
     </div>    
 <script>
     function changeSub(sd){
@@ -33,6 +43,9 @@
     }
 </script>
 <style>
+    h3{
+        margin-top:50px;
+    }
     #wiki-sub{
         width:100%;
         height:500px;
@@ -62,7 +75,12 @@
         box-shadow: none;
         transform: translate(0px, 0px) scale(.9);
     }
-
+    a {
+        color:aqua;
+    }
+    a:visited {
+        color:brown;
+    }
     .highlight {
         color:#FF9F1C;
         font-weight:bolder;    

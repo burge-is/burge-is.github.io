@@ -5,8 +5,16 @@
 </head>
 <body>
     <h1>Path and File Name</h1>
+    <h3>and some extras</h3>
     <div id="url-info">
-        <p id="url"><span onclick="window.location.href='scheme.html'" class="grower" id="scheme" title="scheme">https:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower" title="host" onclick="window.location.href='host.html'">www.dburg.es</span><span class="separator"></span><span id="path1" title="path" class="grower" onclick="window.location.href='path.html?active=path1'" title="path">lessons</span><span class="separator"></span><span id="path2" class="grower" onclick="window.location.href='path.html?active=path2'" title="path">url<span class="separator"></span></span><span id="file" class="grower" onclick="window.location.href='path.html?active=file'" title="file name">what.html</span></p>
+        <p id="url"><span onclick="window.location.href='scheme.html'" class="grower" id="scheme" title="scheme">https:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower" title="host" onclick="window.location.href='host.html'">www.dburg.es</span><span class="separator"></span><span id="path1" title="path" class="grower" onclick="window.location.href='path.html?active=path1'" title="path">lessons</span><span class="separator"></span><span id="path2" class="grower" onclick="window.location.href='path.html?active=path2'" title="path">url</span><span class="separator"></span><span id="file" class="grower" onclick="window.location.href='path.html?active=file'" title="file name">what.html</span></p>
+        <p>This is a another combined section, much like the <a class="highlight" href="host.html#domain-name">domain name</a> which works as a combination of more than one part. The <span class="highlight">path and file name</span> are just like files on your computer.  Everything that follows the hostname is showing you where the <span class="highlight">file</span> you want to access is located and ultimately ends with the name of the <span class="highlight">file</span>. This behavior mimics your filesystem and is no different from when you search for a document on your computer.</p>
+        <p>As you've been navigating between parts of the <span class="highlight">URL</span> notice how the <span class="highlight">file name</span> has changed in the <span class="highlight">address bar</span>. If you did not notice, please take the time to navigate to a separate section and observe this change.</p>
+        <h2>But wait there's more</h2>
+        <p>Did you notice something else about this particular page's <span class="highlight">URL</span>? It contains some extra information at the end.</p>
+        <p id="query-params" class="highlight">?</p>
+        <p>Click between the different <span class="highlight">paths</span> and <span class="highlight">file name</span> to observe this change. This part of a <span class="highlight">URL</span> is called the <span class="highlight">query parameter</span>, this is used to pass along information while still using the same page.  Clicking through these different parts you will observe most of the content remains the same minus changes to <span class="highlight">URL</span> highlighting and the content preceding this paragraph.  This page has Javascipt that is looking at the <span class="highlight">query parameters</span> in order to inform it how to populate these two parts of the page. <span class="highlight">Query parameters</span> are separated from the <span class="highlight">file name</span> by a ? and are separated from other <span class="highlight">query parameters</span> by an &.</p>
+        <p>There is one last part of a <span class="highlight">URL</span> that is worth covering.  Go back to the first paragraph and click on the underlined <span class="highlight">domain name</span>.  You will be taken to the <span class="highlight">host</span> page but you will not be at the start of the page, instead you will be at the section that talks about <span class="highlight">domain names</span>.  Try navigating using this link and the link you've used to switch between parts.  Note the difference in the <span class="highlight">URL</span>. You should see a trailing <span class="highlight">#</span> with some text that follows it.  This part of the <span class="highlight">URL</span> is called the <span class="highlight">anchor</span> and it allows you to jump to specific parts of a page, specified by the text following the <span class="highlight">#</span>.</p>
     </div>    
 <script>
     function getqsv(param) {
@@ -19,6 +27,7 @@
         return null;
     }
     document.getElementById(getqsv('active')).classList.add('active');
+    document.getElementById("query-params").innerText='?active='+getqsv('active');
 </script>
 <style>
     body {
