@@ -7,16 +7,16 @@
 
 
 <div id="address-info">
-    <img id="address-pointer" src="http://dryicons.com/uploads/icon/svg/2069/green_arrow_up.svg"></img>
+    <div id="pointer-holder"><img id="address-pointer" src="http://dryicons.com/uploads/icon/svg/2069/green_arrow_up.svg"></img></div>
     <p>This is your <span class="highlight">address bar</span>, earlier you typed a <span class="highlight">URL</span> into it to begin this lesson.</p>
 </div>
 
 <div id="url-info">
     <p>Specifically, you typed:</p>
-    <p id="url"><span onclick="window.location.href='scheme.html'" class="grower" id="scheme">https:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower" onclick="window.location.href='host.html'">www.dburg.es</span><span class="separator"></span><span id="path1" class="grower" onclick="window.location.href='path.html'">lessons</span><span class="separator"></span><span id="path2" class="grower" onclick="window.location.href='path.html'">url<span class="separator"></span></span><span id="file" class="grower" onclick="window.location.href='path.html'">what.html</span></p>
+    <p id="url"><span onclick="window.location.href='scheme.html'" class="grower" id="scheme" title="scheme">https:</span><span class="separator"></span><span class="separator"></span><span id="host" class="grower" title="host" onclick="window.location.href='host.html'">www.dburg.es</span><span class="separator"></span><span id="path1" title="path" class="grower" onclick="window.location.href='path.html?active=path1'" title="path">lessons</span><span class="separator"></span><span id="path2" class="grower" onclick="window.location.href='path.html?active=path2'" title="path">url<span class="separator"></span></span><span id="file" class="grower" onclick="window.location.href='path.html?active=file'" title="file name">what.html</span></p>
     <p>This is a <span class="highlight">URL</span>. You type it into an address bar to request content from the internet. <span class="highlight">URL</span>s serve as an <strong>address</strong> to web based content. <span class="highlight">URL</span>s are made up of parts separated by <strong>/</strong>'s. Much like an address on an envelope the different parts of a <span class="highlight">URL</span> provide your browser with contextual information regarding the whereabouts of whatever it is you are trying to access.</p>
     <br>
-    <p>Highlight the individual parts <strong>above</strong> to see what each part is called and to highlight it's connected part on our fictional <i>"web envelope"</i> below.</p>
+    <p>Hold your mouse over the individual parts <strong>above</strong> to see what each part is called.</p>
     <br>
     <p>Click on the individual parts <strong>above</strong> to navigate to a different page describing that particular part. Take note that the <span class="highlight">URL</span> changes in the address bar when you do this.</p>
 </div>    
@@ -42,7 +42,10 @@
     document.getElementById("scheme").addEventListener('mouseleave',function(){document.getElementById("envelope").classList.remove('glow')});
 </script>
 <style>
-    
+    #pointer-holder{
+        max-width:20px;
+        max-height:20px;
+    }
     body {
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         color:#FDFFFC;
@@ -51,6 +54,7 @@
     p{
         margin:0px;
     }
+
     #envelope{
         width:700px;
         position:relative;
@@ -62,6 +66,8 @@
         width:20px;
         display:inline-block;
         float:left;
+        max-height:20px;
+        max-width:20px;
     }
     #address-info{
         left:75px;
@@ -91,12 +97,6 @@
         transition: all ease-in-out 300ms;
     }
     .grower:hover{
-        color:yellow;
-        font-size:33px;
-        transform:scale(3.0);
-        cursor:help;
-    }
-    .grower:focus{
         color:yellow;
         font-size:33px;
         transform:scale(3.0);
