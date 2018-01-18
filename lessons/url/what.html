@@ -5,9 +5,10 @@
 </head>
 <body>
 
-<button id="next"><h1>What is a <span class="highlight">URL</span>?</h1></button>
+<button onclick="location.href='parts.html';" id="next"><h1>What is a <span class="highlight">URL</span>?</h1></button>
 <div id="instructions">
     <p>The boring answer is that it is a <span class="highlight">U</span>niform <span class="highlight">R</span>esource <span class="highlight">L</span>ocator</p>
+    <p>A what-y what what? Click the big red button to learn more about what this means.</p>
 </div>
 
 <script>
@@ -22,7 +23,6 @@
     }
 
     button {
-        background-color:#E71D36;
         box-shadow: 0px 17px 10px -10px rgba(255, 255, 255, 0.4);
         cursor: pointer;
         transition: all ease-in-out 300ms
@@ -45,10 +45,14 @@
     }
 
     #next {
+        background-color:#E71D36;
         position:relative;
-        margin:20px;
-        top:20px;
+        margin:200px 0px 20px 0px;
         color:#FDFFFC;
+    }
+    
+    #instructions{
+        position:relative;
     }
 </style>
 </body>
