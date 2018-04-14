@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The JS Parsons Project</title>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+    <link rel="stylesheet" href="groove.css">
+    <script async src="lyf3.js"></script>
+  </head>
+  <body>
+    <!-- <form id="comparison-form">
+      <div>
+        <label for="area1">Area 1</label>
+        <textarea class="editor" name="area1" id="area1" cols="30" rows="10">
+        </textarea>
+      </div>
+      <div>
+        <label for="area2">Area 2</label>
+        <textarea class="editor" name="area2" id="area2" cols="30" rows="10">
+        </textarea>
+      </div>
+    </form> -->
+
+    <div>
+      <div id="piece-holder" class="cardboard">
+      </div>
+      <form id="editor-form">
+        <label for="html">html</label>
+        
+        <textarea disabled class="editor-input cardboard" name="html" id="html-editor"></textarea>
+        <label for="css">css</label>
+        
+        <textarea disabled class="editor-input cardboard" name="css" id="css-editor"></textarea>
+        <label for="js">js</label>
+        
+        <textarea disabled class="editor-input cardboard" name="js" id="js-editor"></textarea>
+      </form>
+      <div id="output-container" class="cardboard">
+        <div class="screen-overlay"></div>
+        <label for="editor-form-output">Output</label>
+        <iframe id="editor-form-output" src="" frameborder="0"></iframe>
+      </div>
+    </div>
+  </body>
+</html>
