@@ -1,0 +1,62 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  transition: all .02s ease-in;
+}
+body{
+  background-color: #337edb;
+  background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */}
+
+label{
+  color:black;
+  display:block;
+  text-transform: uppercase;
+  font-family: 'Patrick Hand SC', cursive;
+  letter-spacing: 2px;
+  margin-top:12px;
+  font-size:24px;
+}
+.cardboard{
+  background-image: url("https://www.transparenttextures.com/patterns/cardboard.png" );
+}
+
+#piece-holder{
+  min-height:200px;
+  background-color:purple;
+}
+#editor-form textarea{
+  padding:10px;
+  min-width:100%;
+  max-width:100%;
+  min-height:24px;
+  -webkit-box-shadow: 7px 7px 7px 0 rgba(0,0,0,0.5) inset;
+  box-shadow: 7px 7px 7px 0 rgba(0,0,0,0.5) inset;  border: 10px solid #337edb;
+  border-radius:5px;
+}
+#editor-form textarea:focus,
+#editor-form textarea:active{
+  min-height:50px !important;
+}
+iframe{
+  background-color:white;
+}
+.tv-container iframe{
+  position: relative;
+  top: 20px;
+  left: 57.5px;
+  height: 230px;
+  width: 313px;
+  z-index:1
+}
+
+.screen-overlay{
+  position:relative;
+  background-image:url('https://image.ibb.co/crAQhv/screen1.png');
+  background-size:cover;
+  z-index:2;
+}
+
+
