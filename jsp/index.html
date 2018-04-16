@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The JS Parsons Project</title>
-    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
-    <link rel="stylesheet" href="groove.css">
-    <script async src="lyf3.js"></script>
-  </head>
-  <body>
-    <!-- <form id="comparison-form">
-      <div>
-        <label for="area1">Area 1</label>
-        <textarea class="editor" name="area1" id="area1" cols="30" rows="10">
-        </textarea>
-      </div>
-      <div>
-        <label for="area2">Area 2</label>
-        <textarea class="editor" name="area2" id="area2" cols="30" rows="10">
-        </textarea>
-      </div>
-    </form> -->
 
-    <div>
-      <div id="piece-holder" class="cardboard cutout">
-      </div>
-      <form id="editor-form">
-        <label for="html">html</label>
-        <textarea  class="editor-input cardboard" name="html" id="html-editor"></textarea>
-        <label for="css">css</label>
-        <textarea  class="editor-input  cardboard" name="css" id="css-editor"></textarea>
-        <label for="js">js</label>
-        <textarea  class="editor-inpu cardboard" name="js" id="js-editor"></textarea>
-      </form>
-      <div id="output-container">
-        <div class="tv"></div>
-        <iframe></iframe>
-      </div>
-    </div>
-  </body>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>The JS Parsons Project</title>
+	<link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="src/index.js"></script>
+	<!-- // Touch drag/drop polyfill // from https://github.com/Bernardo-Castilho/dragdroptouch // THANK YOU, Bernardo Castilho! -->
+	<script src="src/DragDropTouch.js"></script>
+</head>
+<body>
+	<h1>Welcome to The JS Parsons Project - Prototype</h1>
+	<div>
+		<div id="codepen-load-form">
+			<label for="codepen-url">Enter a codepen URL to load the puzzle:</label>
+			<input type="text" name="codepen-url" id="codepen-url" placeholder="https://codepen.io/<user>/pen/<pen>">
+			<button id="load-pen-button" class="button">✅</button>
+			<br/>
+			<p style="">or leave it blank and click load to get a demo puzzle</p>
+		</div>
+		<button id="piece-answer-swapper">FLIP</button>
+		<label for="piece-answer-swapper">click the flip button to see the desired end result</label>
+		<div id="piece-holder-container">			
+			<div id="piece-holder" class="cardboard cutout dropZone"></div>
+			<iframe id="box-cover"></iframe>
+		</div>
+	</div>
+	<form id="editor-form">
+		<div>
+			<label for="html">html</label>
+			<div class="editor-input cardboard popout dropZone" name="html" id="html-editor" draggable="true"></div>
+		</div>
+		<div>
+			<label for="css">css</label>
+			<div class="editor-input cardboard popout dropZone" name="css" id="css-editor" draggable="true"></div>
+		</div>
+		<div>
+			<label for="js">js</label>
+			<div disabled class="editor-input cardboard popout dropZone" name="js" id="js-editor" draggable="true"></div>
+	</div>
+	</form>
+	<div id="output-container">
+		<div class="tv"></div>
+		<iframe id="editor-output"></iframe>
+	</div>
+</div>
+</body>
+
 </html>
-
