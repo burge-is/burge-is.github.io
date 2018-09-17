@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>We are the music makers</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script> window['_fs_debug'] = false; window['_fs_host'] = 'fullstory.com'; window['_fs_org'] = 'EYE7N'; window['_fs_namespace'] = 'FS'; (function(m,n,e,t,l,o,g,y){ if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;} g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[]; o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js'; y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y); g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};g.event=function(i,v){g('event',{n:i,p:v})}; g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)}; g.consent=function(a){g("consent",!arguments.length||a)}; g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)}; g.clearUserCookie=function(){}; })(window,document,window['_fs_namespace'],'script','user'); </script>
+</head>
+<body>
+  <div class="header">
+    <p>#Javascript30 - 1/30</p> 
+    <h1>Drumkit</h1>
+    <p>Click the pads below or the corresponding letters on your keyboard to play the sounds!</p>
+  </div>
+  
+  <div class="drum-pads">
+    <div data-key="65">
+      A
+      <span>Clap</span>
+    </div>
+    <div data-key="83">
+      S
+      <span>Hihat</span>
+    </div>
+    <div data-key="68">
+      D
+      <span>Kick</span>
+    </div>
+    <div data-key="70">
+      F
+      <span>Openhat</span>
+    </div>
+    <div data-key="71">
+      G
+      <span>Boom</span>
+    </div>
+    <div data-key="72">
+      H
+      <span>Ride</span>
+    </div>
+    <div data-key="74">
+      J
+      <span>Snare</span>
+    </div>
+    <div data-key="75">
+      K
+      <span>Tom</span>
+    </div>
+    <div data-key="76">
+      L
+      <span>Tink</span>
+    </div>
+  </div>
+  
+  <audio data-key="65" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/clap.wav"></audio>
+  <audio data-key="83" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/hihat.wav"></audio>
+  <audio data-key="68" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/kick.wav"></audio>
+  <audio data-key="70" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/openhat.wav"></audio>
+  <audio data-key="71" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav"></audio>
+  <audio data-key="72" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/ride.wav"></audio>
+  <audio data-key="74" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/snare.wav"></audio>
+  <audio data-key="75" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/tom.wav"></audio>
+  <audio data-key="76" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/tink.wav"></audio>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
