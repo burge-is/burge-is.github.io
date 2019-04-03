@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pendo Test</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="header">
+    <p>#Javascript30 - 1/30</p> 
+    <h1>Drumkit</h1>
+    <p>Click the pads below or the corresponding letters on your keyboard to play the sounds!</p>
+  </div>
+  
+  <div class="drum-pads">
+    <div id="clap-pad" data-key="65">
+      A
+      <span>Clap</span>
+    </div>
+    <div id="hihat-pad" data-key="83">
+      S
+      <span>Hihat</span>
+    </div>
+    <div id="kick-pad" data-key="68">
+      D
+      <span>Kick</span>
+    </div>
+    <div id="openhat-pad" data-key="70">
+      F
+      <span>Openhat</span>
+    </div>
+    <div id="boom-pad" data-key="71">
+      G
+      <span>Boom</span>
+    </div>
+    <div id="ride-pad" data-key="72">
+      H
+      <span>Ride</span>
+    </div>
+    <div id="snare-pad" data-key="74">
+      J
+      <span>Snare</span>
+    </div>
+    <div id="tom-pad" data-key="75">
+      K
+      <span>Tom</span>
+    </div>
+    <div id="tink-pad" data-key="76">
+      L
+      <span>Tink</span>
+    </div>
+  </div>
+  
+  <audio data-key="65" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/clap.wav"></audio>
+  <audio data-key="83" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/hihat.wav"></audio>
+  <audio data-key="68" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/kick.wav"></audio>
+  <audio data-key="70" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/openhat.wav"></audio>
+  <audio data-key="71" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav"></audio>
+  <audio data-key="72" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/ride.wav"></audio>
+  <audio data-key="74" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/snare.wav"></audio>
+  <audio data-key="75" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/tom.wav"></audio>
+  <audio data-key="76" src="https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/tink.wav"></audio>
+
+
+  <script src="./app.js"></script>
+</body>
