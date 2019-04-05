@@ -1,81 +1,110 @@
-body {
-  font-family: 'Titillium Web', sans-serif;
-  color: #fff;
-  min-height: 100vh;
-  background: linear-gradient(30deg, #FDC56C, #F16A96);
+html {
+	 -webkit-box-sizing: border-box;
+	         box-sizing: border-box;
 }
-
-.header {
-  margin: 30px auto;
-  max-width: 700px;
-  text-align: center;
-  position: relative;
+ *, *:before, *:after {
+	 -webkit-box-sizing: inherit;
+	         box-sizing: inherit;
 }
-
-.header > h1 {
-  font-size: 85px;
-  line-height: 70px;
-  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12);
-  margin: 0;
+ #feature-builder {
+	 display: inline-block;
+	 border: 1px dashed #dab;
+	 padding: 10px;
+	 margin: 10px;
+	 min-width: 320px;
 }
-
-.header > p {
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12);
-  font-size: 16px;
-  line-height: 20px;
+ .orb {
+	 border-radius: 100%;
+	 display: -webkit-box;
+	 display: -ms-flexbox;
+	 display: flex;
+	 -webkit-box-pack: center;
+	     -ms-flex-pack: center;
+	         justify-content: center;
+	 -webkit-box-align: center;
+	     -ms-flex-align: center;
+	         align-items: center;
+	 color: white;
+	 font-weight: 500;
+	 font-size: 24px;
+	 -webkit-transition: background-color 0.1s ease-in;
+	 -o-transition: background-color 0.1s ease-in;
+	 transition: background-color 0.1s ease-in;
 }
-
-.header > p:first-of-type {
-  height: 0;
-  margin: 0;
-  font-size: 12px;
-  transform: translateX(-30px);
-  font-weight: 400;
-  letter-spacing: 0.8px;
+ #chromatic-orb {
+	 background-color: #dab;
+	 -webkit-animation-name: bounce;
+	         animation-name: bounce;
+	 -webkit-animation-iteration-count: infinite;
+	         animation-iteration-count: infinite;
+	 -webkit-animation-duration: 2.2s;
+	         animation-duration: 2.2s;
+	 -webkit-transition: background-color 0.3s linear;
+	 -o-transition: background-color 0.3s linear;
+	 transition: background-color 0.3s linear;
 }
-
-.header > p:last-of-type {
-  font-style: italic;
-  border-top: 1px solid #fff;
-  margin: 10px auto;
-  padding-top: 8px;
-  max-width: 320px;
+ #chromatic-orb ~ button {
+	 margin-top: 10px;
+	 width: 100%;
 }
-
-.drum-pads {
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  justify-content: center;
+ #capture {
+	 width: 100%;
 }
-
-.drum-pads > div {
-  box-sizing: border-box;
-  border: 6px solid #fff;
-  border-radius: 3px;
-  padding: 10px;
-  font-size: 40px;
-  line-height: 40px;
-  font-weight: 700;
-  cursor: pointer;
-  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12);
-  transition: background-color 0.07s, box-shadow 0.07s, transform 0.07s;
+ @-webkit-keyframes bounce {
+	 from, to {
+		 -webkit-transform: translate3d(0, 0, 0);
+		         transform: translate3d(0, 0, 0);
+	}
+	 50% {
+		 -webkit-transform: translate3d(0, -5px, 0);
+		         transform: translate3d(0, -5px, 0);
+	}
 }
-
-.drum-pads > div > span {
-  display: block;
-  text-transform: uppercase;
-  font-size: 16px;
-  line-height: 30px;
-  font-weight: 400;
+ @keyframes bounce {
+	 from, to {
+		 -webkit-transform: translate3d(0, 0, 0);
+		         transform: translate3d(0, 0, 0);
+	}
+	 50% {
+		 -webkit-transform: translate3d(0, -5px, 0);
+		         transform: translate3d(0, -5px, 0);
+	}
 }
-
-.drum-pads > div.playing {
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.14), 0px 6px 30px rgba(0, 0, 0, 0.12);
-  transform: scale(1.04);
+ #captured-orbs label {
+	 text-decoration: underline;
+	 margin-top: 18px;
 }
+ #captured-orbs .captured.orb {
+	 width: 80px;
+	 height: 80px;
+}
+ button {
+	 -webkit-transition: all 0.1s ease-out;
+	 -o-transition: all 0.1s ease-out;
+	 transition: all 0.1s ease-out;
+}
+ button:active {
+	 -webkit-transform: scale(1.1, 0.9);
+	     -ms-transform: scale(1.1, 0.9);
+	         transform: scale(1.1, 0.9);
+}
+ #collector:after {
+	 content: attr(data-result);
+}
+ input:not([type="checkbox"]) {
+	 width: 100%;
+}
+ textarea {
+	 width: 100%;
+	 max-width: 100%;
+}
+ #app {
+	 width: 100%;
+}
+ #pendo-client-debugger #debugger-main-panel > .toggle {
+	 top: 90% !important;
+}
+ #click-difference {
+	 display: inline-block;
+}
+ 
