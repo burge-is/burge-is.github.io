@@ -91,8 +91,8 @@ $('#rule-activation input').addEventListener('change',(evt)=>{
           setTimeout(()=>{
             let lastEvent = getLastClickEvent();
             $('#existing-track-event').title = JSON.stringify(lastEvent);
-            lastEvent.eventProperties = lastEvent.eventProperties || {};
-            lastEvent.eventProperties[propertyName]  = evalResult;
+            lastEvent.featureProperties = lastEvent.featureProperties || {};
+            lastEvent.featureProperties[propertyName]  = evalResult;
           },0)
         }
       })  
