@@ -1,3 +1,5 @@
+let pendoDebugIntervalID = setInterval(_=>pendo?clearInterval(pendoDebugIntervalID)||pendo.enableDebugging():_,0);
+
 let $ = document.querySelector.bind(document);
 
 let chromaticOrb = $('#chromatic-orb');
@@ -164,3 +166,4 @@ function getLastClickEvent(){
 
   return event;
 }
+
