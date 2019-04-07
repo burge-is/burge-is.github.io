@@ -1,4 +1,4 @@
-let pendoDebugIntervalID = setInterval(_=>pendo?clearInterval(pendoDebugIntervalID)||pendo.enableDebugging():_,0);
+let pendoDebugIntervalID = setInterval(_=>pendo&&pendo.enableDebugging?clearInterval(pendoDebugIntervalID)||pendo.enableDebugging():_,100);
 
 let $ = document.querySelector.bind(document);
 
