@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pendo Test</title>
+  <link rel="stylesheet" href="./style.css">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <script>
+(function(apiKey){
+    (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
+    v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
+        o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+        y=e.createElement(n);y.async=!0;y.src='https://pendo-dev-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
+        z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+
+        // Call this whenever information about your visitors becomes available
+        // Please use Strings, Numbers, or Bools for value types.
+        pendo.initialize({
+            visitor: {
+                id:              +new Date()//~~(Math.random() * 10 +1) // Required if user is logged in
+                // email:        // Optional
+                // role:         // Optional
+
+                // You can add any additional visitor level key-values here,
+                // as long as it's not one of the above reserved names.
+            },
+
+            account: {
+                id:           'DAB-Account' // Highly recommended
+                // name:         // Optional
+                // planLevel:    // Optional
+                // planPrice:    // Optional
+                // creationDate: // Optional
+
+                // You can add any additional account level key-values here,
+                // as long as it's not one of the above reserved names.
+            }
+        });
+})('46172ca1-346c-473d-472b-8102e938b216');
+</script>
+
+</head>
+<body>
+  <div id="app" class="container" style="display:inline-block">
+  <div class="row">
+    <div id="feature-builder" class="four columns">
+      <label id="rule-activation">
+        <input type="checkbox">
+        <span class="label-body">Enable Feature Click Properties</span>
+      </label>
+      <div>
+        <label for="rule">Rule</label>
+        <input  type="text" placeholder="#STOP" id="rule">
+        <label for="property-name">Name</label>
+        <input type="text" placeholder="name" id="property-name">
+        <label for="collector">Getter</label>
+        <textarea  style="margin-bottom:0px" placeholder="$('#capture').value" id="collector"></textarea>
+        <span>execution time:  </span><span id="collector-time"></span>
+      <br/>
+        <span>result:  </span><span id="collector-result"></span>
+      <!--   <button class="button-primary" type="submit" >Submit </button> -->
+      </div>
+      <div id="captured-event">
+        <h5 style="margin:5px 0px 0px">Last Captured Event</h5>
+        <pre style="margin:0px"><code>
+<span id="existing-track-event" style="color:gray">{
+  ...existingTrackedProperties,</span>
+  <strong>featureProperties : {
+    <span id="new-property"></span>
+  }</strong>
+<div style="color:gray">}</div>
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="four columns">
+      <input id="capture" type="text" placeholder="#capture"></input>
+      <div id="chromatic-orb" class="orb">0</div>
+      <button id="STOP" class="stopper">#STOP</button>
+      <button id="STAHP" class="stopper">#STAHP</button>
+    </div>
+    <div id="captured-orbs" class="three columns">
+      <div class="row">
+        <div class="six columns">
+          <label for="mousedown-orb">Mouse Down</label>
+          <div id="mousedown-orb" class="captured orb"></div>
+        </div>
+        <div class="six columns">
+          <label for="mouseup-orb">Mouse Up</label>
+          <div id="mouseup-orb" class="captured orb"></div>
+        </div>
+      </div>
+      <label for="click-orb">Click</label>
+      <div id="click-orb" class="captured orb"></div>
+      <span style="font-size:14px">start:  </span><span style="font-size:16px" id="click-start">0</span>
+      <br/>
+        <span style="font-size:14px">end:  </span><span style="font-size:16px" id="click-end">0</span>
+      <br/>
+        <strong>difference:  </strong><span style="font-size:22px" id="click-difference">0</span>
+    </div>
+  </div>
+</div>
+  <script src="./app.js"></script>
+</body>
+

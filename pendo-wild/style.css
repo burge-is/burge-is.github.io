@@ -1,0 +1,110 @@
+html {
+	 -webkit-box-sizing: border-box;
+	         box-sizing: border-box;
+}
+ *, *:before, *:after {
+	 -webkit-box-sizing: inherit;
+	         box-sizing: inherit;
+}
+ #feature-builder {
+	 display: inline-block;
+	 border: 1px dashed #dab;
+	 padding: 10px;
+	 margin: 10px;
+	 min-width: 320px;
+}
+ .orb {
+	 border-radius: 100%;
+	 display: -webkit-box;
+	 display: -ms-flexbox;
+	 display: flex;
+	 -webkit-box-pack: center;
+	     -ms-flex-pack: center;
+	         justify-content: center;
+	 -webkit-box-align: center;
+	     -ms-flex-align: center;
+	         align-items: center;
+	 color: white;
+	 font-weight: 500;
+	 font-size: 24px;
+	 -webkit-transition: background-color 0.1s ease-in;
+	 -o-transition: background-color 0.1s ease-in;
+	 transition: background-color 0.1s ease-in;
+}
+ #chromatic-orb {
+	 background-color: #dab;
+	 -webkit-animation-name: bounce;
+	         animation-name: bounce;
+	 -webkit-animation-iteration-count: infinite;
+	         animation-iteration-count: infinite;
+	 -webkit-animation-duration: 2.2s;
+	         animation-duration: 2.2s;
+	 -webkit-transition: background-color 0.3s linear;
+	 -o-transition: background-color 0.3s linear;
+	 transition: background-color 0.3s linear;
+}
+ #chromatic-orb ~ button {
+	 margin-top: 10px;
+	 width: 100%;
+}
+ #capture {
+	 width: 100%;
+}
+ @-webkit-keyframes bounce {
+	 from, to {
+		 -webkit-transform: translate3d(0, 0, 0);
+		         transform: translate3d(0, 0, 0);
+	}
+	 50% {
+		 -webkit-transform: translate3d(0, -5px, 0);
+		         transform: translate3d(0, -5px, 0);
+	}
+}
+ @keyframes bounce {
+	 from, to {
+		 -webkit-transform: translate3d(0, 0, 0);
+		         transform: translate3d(0, 0, 0);
+	}
+	 50% {
+		 -webkit-transform: translate3d(0, -5px, 0);
+		         transform: translate3d(0, -5px, 0);
+	}
+}
+ #captured-orbs label {
+	 text-decoration: underline;
+	 margin-top: 18px;
+}
+ #captured-orbs .captured.orb {
+	 width: 80px;
+	 height: 80px;
+}
+ button {
+	 -webkit-transition: all 0.1s ease-out;
+	 -o-transition: all 0.1s ease-out;
+	 transition: all 0.1s ease-out;
+}
+ button:active {
+	 -webkit-transform: scale(1.1, 0.9);
+	     -ms-transform: scale(1.1, 0.9);
+	         transform: scale(1.1, 0.9);
+}
+ #collector:after {
+	 content: attr(data-result);
+}
+ input:not([type="checkbox"]) {
+	 width: 100%;
+}
+ textarea {
+	 width: 100%;
+	 max-width: 100%;
+}
+ #app {
+	 width: 100%;
+}
+ #pendo-client-debugger #debugger-main-panel > .toggle {
+	 top: 90% !important;
+}
+ #click-difference {
+	 display: inline-block;
+}
+
