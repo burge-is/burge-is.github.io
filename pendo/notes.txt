@@ -1,0 +1,76 @@
+https://github.com/pendo-io/pendo-client/blob/master/src/browserEvents.js#L513
+We wire the page to monitor  ['click', 'focus', 'submit', 'change']
+* change is debounced 5s https://github.com/pendo-io/pendo-client/blob/master/src/browserEvents.js#L532
+during capture phase https://github.com/pendo-io/pendo-client/blob/master/src/browserEvents.js#L489
+xhr timings means we override XHR.open to snoop on it
+on unload for window, flush everything
+special turbolinks processing for RAILS
+
+HANDLE_EVENT
+get target (x-brows)
+type [any event's .type]
+
+button [middle, left, right]
+alt
+ctrl
+shft
+meta
+
+filter out CDATA
+https://github.com/pendo-io/pendo-client/blob/master/src/browserEvents.js#L169
+https://github.com/pendo-io/pendo-client/blob/master/src/browserEvents.js#L101
+
+target
+id
+classes
+title
+key = tag or input[type]
+attributes https://github.com/pendo-io/pendo-client/blob/master/src/browserEvents.js#L13
+    'a':                      { 'events': ['click'], 'attr': ['href'] },
+    'button':                 { 'events': ['click'], 'attr': ['value', 'name'] },
+    'img':                    { 'events': ['click'], 'attr': ['src','alt'] },
+    'select':                 { 'events': ['mouseup'], 'attr': ['name','type','selectedIndex'] },
+    'textarea':               { 'events': ['mouseup'], 'attr': ['name'] },
+    'input[type="submit"]':   { 'events': ['click'], 'attr': ['name', 'type', 'value'] },
+    'input[type="button"]':   { 'events': ['click'], 'attr': ['name', 'type', 'value'] },
+    'input[type="radio"]':    { 'events': ['click'], 'attr': ['name', 'type'] },
+    'input[type="checkbox"]': { 'events': ['click'], 'attr': ['name', 'type'] },
+    'input[type="password"]': { 'events': ['click'], 'attr': ['name', 'type'] },
+    'input[type="text"]':     { 'events': ['click'], 'attr': ['name', 'type'] }
+
+src & href are sanitized when collected off img and a
+whitelisted attributes
+remove blacklisted
+test title for blacklist and delete
+index (nth child) myindex
+index but element index childindex
+
+do this again for all parents until body and attach to parentElem along the way
+TextCapture explicitly its own class
+getText https://github.com/pendo-io/pendo-client/blob/master/src/browserEvents.js#L323
+
+keys off of excludeAllText and allows a whitelist that gets through this block
+
+textarea is blacklisted explicitly
+loop through children and grab text_element or cdata nodes 
+(trimming surrogates along the way ????)
+
+pageload{
+check if URL is diff
+shouldRecordTitle (title)
+collectEvent
+trigger a flush on next tick
+}
+
+------ collect event properties if click ---------
+collectEvent
+
+
+
+collectEvent
+filter freeNPS event collection
+
+
+flush every page load
+flush every 2 minutes
+flush every page unload
