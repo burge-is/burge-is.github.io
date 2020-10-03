@@ -544,7 +544,7 @@ $all('.role-pill').forEach( rolePill => {
       selectedAppCard => selectedAppCard.getAttribute('data-name')
     );
     
-    if(!selectedApps.length) return;
+    if(!selectedApps.length) return selectAppsWithRole(roleName);
 
     targetPill.setAttribute('data-selected', ""+ !(selected == 'true'));
     
@@ -567,6 +567,14 @@ $all('.role-pill').forEach( rolePill => {
   }
 })(roles);
 
+function selectAppsWithRole(roleName){
+  getAppsWithRoleName(roleName).forEach(
+    app => {
+      const appCard = $(`.app-card[data-name="${app}"]`);
+      if(appCard && appCard.click) appCard.click();
+    }
+  );
+}
 // APPLICATIONS
 function populateAppList(apps = []){
   $('#app-list').innerHTML = apps.map(appCard).join('');
