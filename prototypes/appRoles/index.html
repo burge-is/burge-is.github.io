@@ -14,7 +14,7 @@
 <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 
 
-  <title>CodePen - App Roles Prototype</title>
+  <title>CodePen - App Roles Prototype w/highlight</title>
   
   
   
@@ -261,6 +261,9 @@ button.success {
 .role-pills .role-pill :focus[data-selected="true"]:hover {
   background-color: #128297;
 }
+.app-role.highlight {
+  background-color: yellow;
+}
 </style>
 
   
@@ -454,7 +457,6 @@ function removeRoleFromApp(role, app) {
 }
 
 function getAppRolePair({ app: targetApp, role: targetRole }) {
-  console.log({targetApp, targetRole});
   const foundPair = [...allAppRolePairs].find(({ app, role }) => {
     return app === targetApp && targetRole.name === role.name;
   });
@@ -514,12 +516,30 @@ function getAppsWithRoleName(roleName) {
 $all('.role-pill').forEach( rolePill => {
   const desc = rolePill.getAttribute('data-description');
   const name = rolePill.getAttribute('data-name');
-  rolePill.addEventListener('mouseenter', ()=>updateDescriptionFromRole(name));
+  
+  rolePill.addEventListener('mouseenter', () => {
+    updateDescriptionFromRole(name);
+    const selected = rolePill.getAttribute('data-selected');
+    if (selected === 'kinda') highlightKindas(name);
+  });
   rolePill.addEventListener('click', ()=>toggleRole(rolePill, name));
-  rolePill.addEventListener('mouseout', ()=>updateDescription());
+  rolePill.addEventListener('mouseout', () => {
+    updateDescription();
+    highlightKindas(null);
+  });
 });
   
-
+function highlightKindas(roleName){
+  Array.from($all('.app-card .app-role') || []).forEach( appRole => {
+    while (appRole.classList.contains('highlight')){
+      appRole.classList.remove('highlight');
+    }
+    if(appRole.getAttribute("data-role-name") === roleName) {
+      appRole.classList.add('highlight');
+    }
+  })
+}
+  
   updateDescription();
 
   function updateDescriptionFromRole(roleName){
@@ -604,7 +624,7 @@ function updateRolesOnApps() {
     if(!appCard) return;
     
     appCard.innerHTML = getRolesForApp(app).map(
-      ({name}) => name
+      ({name}) => `<span class="app-role" data-role-name="${name}">${name}</span>`
     ).join(', ');
   });
   activeAppRolePairs
@@ -644,7 +664,6 @@ function selectDeselect(){
 }
 
 function refreshRoleStatus(){
-  console.log('refresh');
   const selectedApps = getSelectedApps();
   let roleCounts = selectedApps.map(getRolesForApp)
     .flat()
