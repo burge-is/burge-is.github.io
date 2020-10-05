@@ -593,7 +593,8 @@ function highlightKindas(roleName){
 
     if(!selectedApps.length) {
       if(getQueryParameters().default){
-        apps.forEach(app => {
+        const hasDefault = $('[data-default]');
+        if (hasDefault) apps.forEach(app => {
           removeRoleFromApp(getDefaultRole(), app)
         })
         setDefaultRole(roleName);
@@ -764,10 +765,11 @@ function setDefaultRole (defaultRoleName) {
       rolePill.removeAttribute('data-default');
       if (defaultRoleName === rolePill.getAttribute('data-name')) {
         rolePill.setAttribute('data-default', "");
+        apps.forEach((app) => addRoleToApp(defaultRoleName, app));
       }
     }
   );
-  apps.forEach((app) => addRoleToApp(defaultRoleName, app));
+  
   updateRolesOnApps();
 }
 
