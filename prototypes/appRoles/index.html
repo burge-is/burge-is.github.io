@@ -590,8 +590,17 @@ function highlightKindas(roleName){
     const selectedApps = Array.from($all('.app-card[data-selected="true"]')).map(
       selectedAppCard => selectedAppCard.getAttribute('data-name')
     );
-    
-    if(!selectedApps.length) return selectAppsWithRole(roleName);
+
+    if(!selectedApps.length) {
+      if(getQueryParameters().default){
+        apps.forEach(app => {
+          removeRoleFromApp(getDefaultRole(), app)
+        })
+        setDefaultRole(roleName);
+        return;
+      }
+      return selectAppsWithRole(roleName);
+    }
 
     targetPill.setAttribute('data-selected', ""+ !(selected == 'true'));
     
@@ -759,7 +768,14 @@ function setDefaultRole (defaultRoleName) {
     }
   );
   apps.forEach((app) => addRoleToApp(defaultRoleName, app));
-  updateAppList();
+  updateRolesOnApps();
+}
+
+function getDefaultRole(){
+  let target = $('[data-default]');
+  if (!target) return;
+
+  return target.getAttribute('data-name');
 }
     </script>
 
