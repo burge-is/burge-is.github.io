@@ -14,7 +14,7 @@
 <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 
 
-  <title>CodePen - App Roles Prototype w/highlight</title>
+  <title>CodePen - App Roles Prototype w/def drop</title>
   
   
   
@@ -271,7 +271,6 @@ button.success {
 }
 .role-pill[data-default] {
   outline: 4px solid blue;
-  pointer-events: none;
 }
 .role-pill[data-default]::before {
   content: "DEFAULT";
@@ -330,8 +329,12 @@ button.success {
       </div>
       <div class="selector-section" id="role-selector">
         <p class="instructions">Apply a Role/s</p>
-        <p class="warning">⚠️ Highlighted roles are not consistent for all selected apps. Clicking this Role will grant this Role to all selected apps.</p>
-        <div id="default-roles">
+        <div id="default-role-dropdown">
+          <label>Select a default role</label>
+          <select id="default-role"></select>
+          <div class="gap" style="height:12px;"></div>
+        </div>
+        <div id="default-roles" name="defaultRole">
           <label class="instructions">Select One or More Roles</label>
           <div class="role-pills"></div>
         </div>
@@ -381,8 +384,12 @@ let roles = Object.freeze([
   },
   {
     name: "Guide Publisher",
-    description:
-      "The Guide Publisher role provides a safe and easy way to provide guide publishing to production environments. You can assign this role to any other role or just give approved teammates only this permission to publish.",
+    description:`A guide publisher can: 
+
+• Publish & Schedule Guides 
+• Create, Edit & Delete Segments for Everyone
+• Create, Edit & Delete Pages & Features
+`,
     custom: false
   },
   {
@@ -582,10 +589,11 @@ function highlightKindas(roleName){
     title = (title && title.toString()) || 'Learn More About Pendo Roles & Permissions';
     description = (description && description.toString()) || 'Hover over any of the default or custom roles above to learn about them. As you create custom roles, the descriptions will show in this area to provide a quick reference for you.';
     $('#role-description .title').innerHTML = title;
-    $('#role-description .description').innerHTML = description;
+    $('#role-description .description').innerHTML = `${description}`;
   }
   
   function toggleRole(targetPill, roleName){
+    if(targetPill.getAttribute('data-default') != null) return;
     const selected = targetPill.getAttribute('data-selected');
     const selectedApps = Array.from($all('.app-card[data-selected="true"]')).map(
       selectedAppCard => selectedAppCard.getAttribute('data-name')
@@ -598,6 +606,7 @@ function highlightKindas(roleName){
           removeRoleFromApp(getDefaultRole(), app)
         })
         setDefaultRole(roleName);
+        $(`option[value="${roleName}"]`).selected=true
         return;
       }
       return selectAppsWithRole(roleName);
@@ -753,12 +762,6 @@ function getQueryParameters(){
   }, {} );
 }
 
-if (getQueryParameters().default) {
-  let defaultRole = getQueryParameters().default;
-  
-  setDefaultRole(defaultRole);
-}
-
 function setDefaultRole (defaultRoleName) {
   $all('.role-pill').forEach(
     rolePill => {
@@ -778,6 +781,52 @@ function getDefaultRole(){
   if (!target) return;
 
   return target.getAttribute('data-name');
+}
+
+$('#default-role').innerHTML = [`<option disabled selected value> -- select an option -- </option>`].concat(roles.map(({name}) => `<option value="${name}">${name}</option>`)).join('');
+
+$('#default-role').addEventListener('change', (a)=>{
+  const defRole = getDefaultRole();
+  apps.forEach(app => {
+    if(defRole) removeRoleFromApp(defRole, app)
+  })
+ setDefaultRole(a.target.selectedOptions[0].value);
+})
+
+
+if (getQueryParameters().default) {
+  let defaultRole = getQueryParameters().default;
+  
+  setDefaultRole(defaultRole);
+  $(`option[value="${defaultRole}"]`).selected=true
+}
+
+
+$all('#default-role option').forEach(
+  roleOption => {
+    let roleName = roleOption.value;
+    roleOption.addEventListener('mouseenter', () => {
+      console.log(roleName);
+      updateDescriptionFromRole(roleName);
+      const selected = rolePill.getAttribute('data-selected');
+      if (selected === 'kinda') highlightKindas(roleName);
+    });
+    roleOption.addEventListener('mouseout', () => {
+      updateDescription();
+      highlightKindas(null);
+    });
+  }
+)
+
+$('#default-role-dropdown').style.display = "none";
+
+if (getQueryParameters().dropdown){
+  $('#default-role-dropdown').style.display = "block";
+}
+
+if (getQueryParameters().roleOnLeft){
+  $('#application-selector').style.order = 2;
+  $('#role-selector').style.order = 1;
 }
     </script>
 
