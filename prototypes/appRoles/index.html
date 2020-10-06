@@ -710,13 +710,13 @@ $('#app-search').addEventListener('keyup', updateAppList);
 
 $('#app-select-link').addEventListener('click', selectDeselect);
 
-function selectDeselect(){
+function selectDeselect(evt, deselect){
   const allOn = Array.from($all('.app-card') || []).every(
     (appCard) => {
       return appCard.getAttribute('data-selected') == 'true';
     }
   );
-  if(allOn){
+  if(allOn || deselect){
     $all('.app-card').forEach(appCard => {
       appCard.setAttribute('data-selected', 'false');
     })
@@ -782,6 +782,8 @@ function getQueryParameters(){
 }
 
 function setDefaultRole (defaultRoleName) {
+  selectDeselect(null, true);
+
   $all('.role-pill').forEach(
     rolePill => {
       rolePill.removeAttribute('data-default');
@@ -826,7 +828,6 @@ $all('#default-role option').forEach(
   roleOption => {
     let roleName = roleOption.value;
     roleOption.addEventListener('mouseenter', () => {
-      console.log(roleName);
       updateDescriptionFromRole(roleName);
       const selected = rolePill.getAttribute('data-selected');
       if (selected === 'kinda') highlightKindas(roleName);
