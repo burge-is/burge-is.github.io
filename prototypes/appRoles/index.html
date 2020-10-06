@@ -798,7 +798,8 @@ if (getQueryParameters().default) {
   let defaultRole = getQueryParameters().default;
   
   setDefaultRole(defaultRole);
-  $(`option[value="${defaultRole}"]`).selected=true
+  const defaultOption = $(`option[value="${defaultRole}"]`);
+  if (defaultOption) defaultOption.selected = true;
 }
 
 
