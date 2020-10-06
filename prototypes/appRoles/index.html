@@ -378,53 +378,72 @@ let apps = Object.freeze([
 let roles = Object.freeze([
   {
     name: "Guide Creator",
-    description:
-      "The Guide Creator role gives a user the ability to create guides for the given application.",
+    description:`A guide creator can:
+<ul>
+<li>Create & Edit Guides from Scratch</li>
+<li>Create & Edit Guides from Layouts (and Templates)</li>
+<li>Delete Guides</li>
+<li>Create, Edit & Delete Pages and Features</li>
+<li>Create, Edit & Delete Segments for Everyone</li>
+</ul>`,
     custom: false
   },
   {
     name: "Guide Publisher",
     description:`A guide publisher can: 
-
-• Publish & Schedule Guides 
-• Create, Edit & Delete Segments for Everyone
-• Create, Edit & Delete Pages & Features
+<ul>
+<li>Publish & Schedule Guides </li>
+<li>Create, Edit & Delete Segments for Everyone</li>
+<li>Create, Edit & Delete Pages & Features</li>
+</ul>
 `,
     custom: false
   },
   {
     name: "Analyst",
-    description: "Lorem ipsum analysum analyzes your application",
+    description: `An analyst can:
+<ul>
+<li>Create, Edit & Delete Reports for Everyone</li>
+<li>Create, Edit & Delete Segments for Everyone </li>
+<li>Create, Edit & Delete Segments for Themselves</li>
+<li>Create, Edit & Delete Pages and Features</li>
+<li>Edit & Delete Track Events</li>
+<li>Create, Edit & Delete Groups</li>
+</ul>
+`,
     custom: false
   },
   {
     name: "Explorer",
-    description: "The Dora of your application",
+    description: `An explorer can:
+<li>Create, Edit & Delete Segments for Themselves</li>
+<li>Create, Edit & Delete Reports for Themselves</li>
+`,
     custom: false
   },
   {
     name: "Tagging Manager",
-    description: "This description is provided when you create a custom role.",
+    description: "A Tagging Manager can tag and manage features and pages in our app.",
     custom: true
   },
   {
     name: "UX Design Team",
-    description: "This description is provided when you create a custom role.",
+    description: "The UX Design Team has permission to do anything on our team except publish guides.",
     custom: true
   },
   {
     name: "Exec Team",
-    description: "This description is provided when you create a custom role.",
+    description: "The Exec Team can only see dashboards that are shared with them.",
     custom: true
   },
   {
     name: "Guide Creator Lite",
-    description: "This description is provided when you create a custom role.",
+    description: "This role only allows guide creators to create from themes and layouts.",
     custom: true
   },
   {
     name: "App Manager",
-    description: "This description is provided when you create a custom role.",
+    description: "This user has full control over this application’s settings and guides.",
     custom: true
   }
 ]);
@@ -828,6 +847,7 @@ if (getQueryParameters().dropdown){
 if (getQueryParameters().roleOnLeft){
   $('#application-selector').style.order = 2;
   $('#role-selector').style.order = 1;
+  $('#application-selector').borderLeft = `1px solid var(--lightGrey)`;
 }
     </script>
 
