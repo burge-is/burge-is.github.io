@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - App Roles Prototype w/def drop</title>
+  
+  
+  
+  
+<style>
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
+}
+:root {
+  --lightGrey: #DADCE5;
+}
+* {
+  font-family: 'Montserrat';
+  background-color: white;
+}
+html {
+  background-color: #f8f8f8;
+}
+#user-form {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8f8f8;
+}
+#user-form label {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  padding: 5px 0px;
+}
+#user-form input {
+  padding-left: 10px;
+  border: 1px solid var(--lightGrey);
+  min-width: 300px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  height: 32px;
+}
+#user-form .iconed-input {
+  position: relative;
+}
+#user-form .iconed-input .icon {
+  background-color: none;
+  font-size: 12px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+#user-form .iconed-input input {
+  padding-left: 28px;
+}
+#user-form > section {
+  width: 80%;
+  min-width: 800px;
+  max-width: 1200px;
+  border: 1.5px solid var(--lightGrey);
+  border-radius: 5px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 20px;
+}
+#user-form > section > h3 {
+  margin: 0px;
+  border-bottom: 1px solid var(--lightGrey);
+  padding: 10px;
+}
+#user-form > section .body {
+  padding-left: 10px;
+}
+.sticky-gap {
+  height: 42px;
+}
+#form-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+}
+#form-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+  box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+#form-footer #button-section {
+  float: right;
+  margin-right: 20px;
+}
+#form-footer #button-section button {
+  margin-right: 8px;
+}
+button {
+  padding: 8px 10px;
+  border: none;
+  background-color: var(--lightGrey);
+  border-radius: 3px;
+}
+button.success {
+  background-color: #128297;
+  color: white;
+}
+#appRoles .body {
+  padding: 0px !important;
+  display: -webkit-box;
+  display: flex;
+}
+#appRoles .selector-section {
+  display: inline;
+  width: 50%;
+  min-height: 20px;
+  padding: 10px;
+}
+#appRoles .selector-section:nth-child(2n) {
+  border-left: 1px solid var(--lightGrey);
+}
+#app-select-link {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  text-decoration: none;
+  color: #016479;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+#app-list {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  gap: 5px;
+}
+#app-list .app-card {
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  border: 1px solid var(--lightGrey);
+  border-radius: 5px;
+  padding: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+#app-list .app-card .title {
+  font-weight: 400;
+  font-size: 14px;
+}
+#app-list .app-card .roles {
+  font-size: 12px;
+  color: #6A6C75;
+}
+#app-list .app-card[data-selected="true"] {
+  outline: 2px solid #016479;
+}
+#app-list .app-card:hover {
+  border: 0.1px solid var(--lightGrey);
+  border-left: 2px solid var(--lightGrey);
+  border-bottom: 3px solid var(--lightGrey);
+}
+#app-list .app-card:active {
+  border: 0.1px solid var(--lightGrey);
+  -webkit-transform: scale(0.999);
+          transform: scale(0.999);
+}
+.seperator {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid var(--lightGrey);
+  margin: 12px 0px;
+}
+#role-description {
+  min-height: 300px;
+}
+#role-description .title {
+  margin-top: 36px;
+  font-weight: bold;
+}
+#role-description .description {
+  font-size: 14px;
+}
+.role-pills {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 12px;
+}
+.role-pills .role-pill {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--lightGrey);
+  position: relative;
+}
+.role-pills .role-pill[data-selected="true"] {
+  background-color: #128297;
+  color: white;
+}
+.role-pills .role-pill[data-selected="kinda"] {
+  background-color: yellow;
+  color: black;
+}
+.role-pills .role-pill:hover[data-selected="true"],
+.role-pills .role-pill :focus[data-selected="true"] {
+  background-color: #128297;
+  color: white;
+}
+.role-pills .role-pill:hover[data-selected="true"]:hover,
+.role-pills .role-pill :focus[data-selected="true"]:hover {
+  background-color: #128297;
+}
+.app-role.highlight {
+  background-color: yellow;
+}
+#role-selector .warning {
+  font-size: 12px;
+  color: red;
+  display: none;
+}
+.role-pill[data-default] {
+  outline: 4px solid blue;
+  pointer-events: none;
+}
+.role-pill[data-default]::before {
+  content: "DEFAULT";
+  position: absolute;
+  top: -5px;
+  font-size: 7px;
+  background-color: white;
+  padding: 2px;
+  background-color: blue;
+  font-weight: 800;
+  right: -5px;
+  color: white;
+  padding: 3px;
+  font-family: helvetica;
+  letter-spacing: 1px;
+}
+</style>
+
+  
+  
+  
+  
+
+</head>
+
+<body translate="no" >
+  <div id="form-header">Add User</div>
+<div id="user-form">
+  <section id="user-details">
+    <h3>User Details</h3>
+    <div class="body">
+      <label for="first-name">First Name  </label>
+      <input type="text" name="first-name" value="Jane"/>
+      <label for="last-name">Last Name  </label>
+      <input type="text" name="last-name" value="Smith"/>
+      <label for="email">Email  </label>
+      <input type="email" name="email" value="jane.smith@company.co"/>
+    </div>
+  </section>
+  <section id="appRoles">
+    <h3>All Application Permissions</h3>
+    <div class="body">
+      <div class="selector-section" id="application-selector"> 
+        <p class="instructions">Select an Application/s</p>
+        <div class="iconed-input">
+          <div class="icon">🔍</div>
+          <input id="app-search" placeholder="Search Applications"/>
+        </div><span id="app-select-link" href="#">Select All/Deselect All</span>
+        <div class="gap" style="display:block; height:10px"></div>
+        <div id="app-list">
+          <div class="app-card">
+            <div class="title">Acme Cloud Finance</div>
+            <div class="roles">Explorer</div>
+          </div>
+        </div>
+      </div>
+      <div class="selector-section" id="role-selector">
+        <p class="instructions">Apply a Role/s</p>
+        <div id="default-role-dropdown">
+          <label>Select a default role</label>
+          <select id="default-role"></select>
+          <div class="gap" style="height:12px;"></div>
+        </div>
+        <div id="default-roles" name="defaultRole">
+          <label class="instructions">Select One or More Roles</label>
+          <div class="role-pills"></div>
+        </div>
+        <div class="gap" style="height:15px; display:block"></div>
+        <div id="custom-roles">
+          <label class="instructions">Custom Roles</label>
+          <div class="role-pills"></div>
+        </div>
+        <div class="seperator"></div>
+        <div id="role-description">
+          <p class="title"></p>
+          <p class="description"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="gap" style="height:35px; display:block"></div>
+<footer id="form-footer">
+  <div id="button-section">
+    <button>Cancel</button>
+    <button class="success">Invite User</button>
+  </div>
+</footer>
+  
+  
+  
+      <script id="rendered-js" >
+$ = document.querySelector.bind(document);
+$all = (selector) => {
+  return Array.from( document.querySelectorAll(selector) );
+}
+
+let apps = Object.freeze([
+  "Acme Finance",
+  "Acme Health Analytics",
+  "Acme Market Assist",
+  "Acme Logistics Manager"
+].sort());
+
+let roles = Object.freeze([
+  {
+    name: "Guide Creator",
+    description:
+      "The Guide Creator role gives a user the ability to create guides for the given application.",
+    custom: false
+  },
+  {
+    name: "Guide Publisher",
+    description:
+      "The Guide Publisher role provides a safe and easy way to provide guide publishing to production environments. You can assign this role to any other role or just give approved teammates only this permission to publish.",
+    custom: false
+  },
+  {
+    name: "Analyst",
+    description: "Lorem ipsum analysum analyzes your application",
+    custom: false
+  },
+  {
+    name: "Explorer",
+    description: "The Dora of your application",
+    custom: false
+  },
+  {
+    name: "Tagging Manager",
+    description: "This description is provided when you create a custom role.",
+    custom: true
+  },
+  {
+    name: "UX Design Team",
+    description: "This description is provided when you create a custom role.",
+    custom: true
+  },
+  {
+    name: "Exec Team",
+    description: "This description is provided when you create a custom role.",
+    custom: true
+  },
+  {
+    name: "Guide Creator Lite",
+    description: "This description is provided when you create a custom role.",
+    custom: true
+  },
+  {
+    name: "App Manager",
+    description: "This description is provided when you create a custom role.",
+    custom: true
+  }
+]);
+let allAppRolePairs = ((apps, roles) => {
+  let allAppRolePairs = [];
+  apps.forEach((app) => {
+    roles.forEach((role) => {
+      allAppRolePairs.push({ app, role });
+    });
+  });
+  Object.freeze(allAppRolePairs);
+
+  return allAppRolePairs;
+})(apps, roles);
+
+let activeAppRolePairs = new Set();
+
+function getAppByName(name) {
+  if (!(name && name.toLowerCase))
+    throw new Error("provide a string value to `getAppByName`");
+
+  return apps.find((app) => app.toLowerCase() === name.toLowerCase());
+}
+function getRoleByName(name) {
+  if (!(name && name.toLowerCase))
+    throw new Error("provide a string value to `getRoleByName`");
+
+  return roles.find(
+    ({ name: roleName }) => name.toLowerCase() === roleName.toLowerCase()
+  );
+}
+
+function addRoleToAppByName(roleName, appName) {
+  const app = getAppByName(appName);
+  const role = getRoleByName(roleName);
+
+  return addRoleToApp(role, app);
+}
+function removeRoleFromAppByName(roleName, appName) {
+  const app = getAppByName(appName);
+  const role = getRoleByName(roleName);
+  
+  return removeRoleFromApp(role, app);
+}
+
+function addRoleToApp(role, app) {
+  if (typeof role === 'string' && typeof app === 'string') {
+    return addRoleToAppByName(role, app);
+  }
+  const appRolePair = getAppRolePair({ app, role });
+  activeAppRolePairs.add(appRolePair);
+
+  return activeAppRolePairs;
+}
+
+function removeRoleFromApp(role, app) {
+  if (typeof role === 'string' && typeof app === 'string') {
+    return removeRoleFromAppByName(role, app);
+  }
+  const appRolePair = getAppRolePair({ app, role });
+  activeAppRolePairs.delete(appRolePair);
+
+  return activeAppRolePairs;
+}
+
+function getAppRolePair({ app: targetApp, role: targetRole }) {
+  const foundPair = [...allAppRolePairs].find(({ app, role }) => {
+    return app === targetApp && targetRole.name === role.name;
+  });
+  if (!foundPair) {
+    throw new Error(
+      "This pairing does not exist - " +
+        JSON.stringify(
+          {
+            app: targetApp || {},
+            role: targetRole || {}
+          },
+          undefined,
+          2
+        )
+    );
+  }
+
+  return foundPair;
+}
+
+function getRolesForApp(appName) {
+  const targetApp = getAppByName(appName);
+
+  return [...activeAppRolePairs]
+    .filter(({ app }) => targetApp === app)
+    .map(({ role }) => role);
+}
+
+function getAppsWithRole(targetRole) {
+  return [...activeAppRolePairs]
+    .filter(({ role }) => targetRole === role)
+    .map(({ app }) => app);
+}
+
+function getAppsWithRoleName(roleName) {
+  const targetRole = getRoleByName(roleName);
+
+  return getAppsWithRole(targetRole);
+}
+
+// ABOVE THIS IS APP ROLE RELATIONSHIP JS
+
+// BELOW HERE IS HTML BINDING STUFF
+
+
+// ROLE PILLS
+(function populatePills(roles) {
+  let customPillsSection = $('#custom-roles > .role-pills');
+  customPillsSection.innerHTML = roles.filter(({custom})=>custom)
+                                      .map(pillHTML)
+                                      .join('');
+  let defaultPillsSection = $('#default-roles > .role-pills')
+  defaultPillsSection.innerHTML = roles.filter(({custom})=>!custom)
+                                        .map(pillHTML)
+                                        .join('');
+  
+$all('.role-pill').forEach( rolePill => {
+  const desc = rolePill.getAttribute('data-description');
+  const name = rolePill.getAttribute('data-name');
+  
+  rolePill.addEventListener('mouseenter', () => {
+    updateDescriptionFromRole(name);
+    const selected = rolePill.getAttribute('data-selected');
+    if (selected === 'kinda') highlightKindas(name);
+  });
+  rolePill.addEventListener('click', ()=>toggleRole(rolePill, name));
+  rolePill.addEventListener('mouseout', () => {
+    updateDescription();
+    highlightKindas(null);
+  });
+});
+  
+function highlightKindas(roleName){
+  Array.from($all('.app-card .app-role') || []).forEach( appRole => {
+    while (appRole.classList.contains('highlight')){
+      appRole.classList.remove('highlight');
+    }
+    if(appRole.getAttribute("data-role-name") === roleName) {
+      appRole.classList.add('highlight');
+    }
+  })
+}
+  
+  updateDescription();
+
+  function updateDescriptionFromRole(roleName){
+    if (roleName) {
+      let role = getRoleByName(roleName);
+      updateDescription(role.name, role.description);
+    } else {
+      updateDescription();
+    }  
+  }
+
+  function updateDescription(title, description) {
+    title = (title && title.toString()) || 'Learn More About Pendo Roles & Permissions';
+    description = (description && description.toString()) || 'Hover over any of the default or custom roles above to learn about them. As you create custom roles, the descriptions will show in this area to provide a quick reference for you.';
+    $('#role-description .title').innerHTML = title;
+    $('#role-description .description').innerHTML = description;
+  }
+  
+  function toggleRole(targetPill, roleName){
+    const selected = targetPill.getAttribute('data-selected');
+    const selectedApps = Array.from($all('.app-card[data-selected="true"]')).map(
+      selectedAppCard => selectedAppCard.getAttribute('data-name')
+    );
+
+    if(!selectedApps.length) {
+      if(getQueryParameters().default){
+        const hasDefault = $('[data-default]');
+        if (hasDefault) apps.forEach(app => {
+          removeRoleFromApp(getDefaultRole(), app)
+        })
+        setDefaultRole(roleName);
+        $(`option[value="${roleName}"]`).selected=true
+        return;
+      }
+      return selectAppsWithRole(roleName);
+    }
+
+    targetPill.setAttribute('data-selected', ""+ !(selected == 'true'));
+    
+    
+    if (selectedApps.every(app=>getRolesForApp(app)
+                           .map(({name})=>name)
+                           .includes(roleName)
+                          )
+    ){
+      selectedApps.forEach(appName=>removeRoleFromApp(roleName, appName));
+    }else {
+      selectedApps.forEach(appName=>addRoleToApp(roleName, appName));  
+    }
+    
+    updateRolesOnApps();
+  }
+
+  function pillHTML (role) {
+    return `<div class="role-pill" data-name="${role.name}" data-description="${role.description}">${role.name}</div>`;
+  }
+})(roles);
+
+function selectAppsWithRole(roleName){
+  getAppsWithRoleName(roleName).forEach(
+    app => {
+      const appCard = $(`.app-card[data-name="${app}"]`);
+      if(appCard && appCard.click) appCard.click();
+    }
+  );
+}
+// APPLICATIONS
+function populateAppList(apps = []){
+  $('#app-list').innerHTML = apps.map(appCard).join('');
+  $all('#app-list .app-card').forEach(appCard => {
+      appCard.addEventListener('click', (evt)=>toggleApp(evt, appCard));
+  });
+  updateRolesOnApps();
+
+  function appCard (app) {
+    return `<div data-name="${app}" class="app-card">
+      <div class="title">${app}</div>
+      <div class="roles">${app}</div>
+    </div>`
+  }
+  function toggleApp(evt, target){
+    toggleApp.lastTarget = target;
+    const selected = target.getAttribute('data-selected');
+    
+    target.setAttribute('data-selected', ""+ !(selected == 'true'));
+    
+    refreshRoleStatus();
+  }
+}
+function updateRolesOnApps() {
+  apps.forEach(app=>{
+    let appCard = $(`.app-card[data-name="${app}"] .roles`);
+    if(!appCard) return;
+    
+    appCard.innerHTML = getRolesForApp(app).map(
+      ({name}) => `<span class="app-role" data-role-name="${name}">${name}</span>`
+    ).join(', ');
+  });
+  activeAppRolePairs
+}
+function updateAppList(){
+  const matchingApps = apps.filter(
+    app => {
+      const srch = $('#app-search').value;
+      return app.toLowerCase().indexOf(srch.trim().toLowerCase()) !== -1;
+    }
+  );
+
+  populateAppList(matchingApps);  
+}
+updateAppList();
+
+$('#app-search').addEventListener('keyup', updateAppList);
+
+$('#app-select-link').addEventListener('click', selectDeselect);
+
+function selectDeselect(){
+  const allOn = Array.from($all('.app-card') || []).every(
+    (appCard) => {
+      return appCard.getAttribute('data-selected') == 'true';
+    }
+  );
+  if(allOn){
+    $all('.app-card').forEach(appCard => {
+      appCard.setAttribute('data-selected', 'false');
+    })
+  } else {
+    $all('.app-card').forEach(appCard => {
+      appCard.setAttribute('data-selected', 'true');
+    })
+  }
+  refreshRoleStatus();
+}
+
+function refreshRoleStatus(){
+  const selectedApps = getSelectedApps();
+  let roleCounts = selectedApps.map(getRolesForApp)
+    .flat()
+    .map(({name})=>name)
+    .reduce((acc, curr)=>{
+      if (acc[curr]){
+        acc[curr]++;
+      } else {
+        acc[curr] = 1;
+      }
+      return acc;
+    }, {});
+
+  Array.from($all('.role-pill')).forEach(rolePill=>{
+    const roleName = rolePill.getAttribute('data-name');
+    let selectedValue = 'kinda';
+    if (!roleCounts[roleName]) {
+      selectedValue = 'false';
+    } else if(roleCounts[roleName] === selectedApps.length){
+      selectedValue = 'true';
+    } 
+
+    rolePill.setAttribute('data-selected', selectedValue);
+    if (selectedValue === 'kinda') {
+      rolePill.setAttribute('title', 'Not all selected apps have this value, Click again to enable for all selected apps.');
+    } else {
+      rolePill.removeAttribute('title');
+    }
+  })
+}
+
+function getSelectedApps() {
+  return Array.from(
+    $all('.app-card[data-selected="true"]')
+  ).map(selectedApp => selectedApp.getAttribute('data-name'));
+}
+
+
+function getQueryParameters(){
+  let target = window.location.search;
+
+  if (target[0] === '?'){
+      target = target.substring(1);
+  }
+
+  return target.split('&').reduce((queryParams, pair)=>{
+    [key, val] = pair.split('=');
+    queryParams[key] = decodeURI(val);
+    return queryParams;
+  }, {} );
+}
+
+function setDefaultRole (defaultRoleName) {
+  $all('.role-pill').forEach(
+    rolePill => {
+      rolePill.removeAttribute('data-default');
+      if (defaultRoleName === rolePill.getAttribute('data-name')) {
+        rolePill.setAttribute('data-default', "");
+        apps.forEach((app) => addRoleToApp(defaultRoleName, app));
+      }
+    }
+  );
+  
+  updateRolesOnApps();
+}
+
+function getDefaultRole(){
+  let target = $('[data-default]');
+  if (!target) return;
+
+  return target.getAttribute('data-name');
+}
+
+$('#default-role').innerHTML = [`<option disabled selected value> -- select an option -- </option>`].concat(roles.map(({name}) => `<option value="${name}">${name}</option>`)).join('');
+
+$('#default-role').addEventListener('change', (a)=>{
+  const defRole = getDefaultRole();
+  apps.forEach(app => {
+    if(defRole) removeRoleFromApp(defRole, app)
+  })
+ setDefaultRole(a.target.selectedOptions[0].value);
+})
+
+
+if (getQueryParameters().default) {
+  let defaultRole = getQueryParameters().default;
+  
+  setDefaultRole(defaultRole);
+  $(`option[value="${defaultRole}"]`).selected=true
+}
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
